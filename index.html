@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-blue-600">TailwindSite</h1>
+        <ul class="hidden md:flex gap-6 text-gray-700">
+            <li><a href="#" class="hover:text-blue-500">Home</a></li>
+            <li><a href="#" class="hover:text-blue-500">About</a></li>
+            <li><a href="#" class="hover:text-blue-500">Contact</a></li>
+        </ul>
+        <div class="md:hidden text-2xl cursor-pointer">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="text-center py-16 bg-blue-50">
+        <h2 class="text-4xl font-bold mb-4">Welcome to TailwindSite</h2>
+        <p class="text-lg text-gray-600 mb-6">This is a responsive webpage built with Tailwind CSS.</p>
+        <button class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">Get Started</button>
+    </section>
+
+    <!-- Card Section -->
+    <section class="py-12 px-4 grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <!-- Card 1 -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+            <img src="C:\Users\lenovo\OneDrive\Documents\tailwind\assets\img\47258.jpg" class="rounded-lg mb-4 mx-auto" />
+            <h3 class="text-xl font-semibold mb-2">Nature View</h3>
+            <p class="text-gray-600 mb-4">Experience the beauty of nature with this beautiful card.</p>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Read More</button>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+            <img src="C:\Users\lenovo\OneDrive\Documents\tailwind\assets\img\hi.jpeg" class="rounded-lg mb-4 mx-auto" />
+            <h3 class="text-xl font-semibold mb-2">Technology</h3>
+            <p class="text-gray-600 mb-4">Stay updated with the latest trends in technology.</p>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Read More</button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+            <img src="C:\Users\lenovo\OneDrive\Documents\tailwind\assets\img\th.jpeg" class="rounded-lg mb-4 mx-auto" />
+            <h3 class="text-xl font-semibold mb-2">City Lights</h3>
+            <p class="text-gray-600 mb-4">Explore the vibrant life of modern cities.</p>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Read More</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-center py-6 mt-10 shadow-inner">
+        <p class="text-gray-600">© 2025 TailwindSite. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
