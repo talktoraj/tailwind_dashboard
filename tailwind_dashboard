@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Tailwind Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .dark-mode {
+            --tw-bg-opacity: 1;
+            background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
+            color: white;
+        }
+    </style>
+</head>
+
+<body id="mainBody" class="bg-gray-100 transition-colors duration-300 text-gray-900">
+
+
+    <!-- Layout -->
+    <div class="flex min-h-screen">
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-black dark-mode w-64 p-4 hidden md:block">
+            <h2 class="text-2xl font-bold text-black-600 mb-6">Dashboard</h2>
+            <ul class="space-y-4">
+                <li><a href="#" class="hover:text-blue-500">📊 Overview</a></li>
+                <li><a href="#" class="hover:text-blue-500">👤 Users</a></li>
+                <li><a href="#" class="hover:text-blue-500">💼 Projects</a></li>
+                <li><a href="#" class="hover:text-blue-500">📨 Messages</a></li>
+                <li><a href="#" class="hover:text-blue-500">⚙️ Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+
+            <!-- Topbar -->
+            <header class="bg-white text-black dark-mode shadow px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <button id="toggleSidebar" class="md:hidden text-2xl">☰</button>
+                    <input type="text" placeholder="Search..."
+                        class="px-4 py-2 border rounded-md dark:bg-gray-700 dark:text-white" />
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="darkToggle" class="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300 transition-colors duration-300">
+                        🌙
+                    </button>
+
+                    <img src="C:\Users\lenovo\OneDrive\Documents\tailwind\assets\img\47258.jpg" 
+                         class="w-10 h-10 rounded-full border" />
+                </div>
+            </header>
+
+            <!-- Stat Cards -->
+            <main class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white dark-mode p-6 rounded-xl shadow hover:shadow-lg">
+                    <h3 class="text-black text-xl font-semibold mb-2">👤 Users</h3>
+                    <p class="text-3xl font-bold text-blue-600">1,200</p>
+                </div>
+                <div class="bg-white dark-mode p-6 rounded-xl shadow hover:shadow-lg">
+                    <h3 class="text-black text-xl font-semibold mb-2">💰 Revenue</h3>
+                    <p class="text-3xl font-bold text-green-500">$8,540</p>
+                </div>
+                <div class="bg-white dark-mode p-6 rounded-xl shadow hover:shadow-lg">
+                    <h3 class="text-black text-xl font-semibold mb-2">📦 Orders</h3>
+                    <p class="text-3xl font-bold text-yellow-500">320</p>
+                </div>
+                <div class="bg-white dark-mode p-6 rounded-xl shadow hover:shadow-lg">
+                    <h3 class="text-black text-xl font-semibold mb-2">📨 Messages</h3>
+                    <p class="text-3xl font-bold text-red-500">23</p>
+                </div>
+            </main>
+
+            <!-- Charts Section -->
+            <section class="px-6 py-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white dark-mode p-4 rounded-xl shadow">
+                    <h4 class="text-black text-lg font-semibold mb-2">📊 Bar Chart</h4>
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div class="bg-white dark-mode p-4 rounded-xl shadow">
+                    <h4 class="text-black text-lg font-semibold mb-2">📈 Line Chart</h4>
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Table Section -->
+            <section class="px-6 py-4">
+                <div class="bg-white text-black dark-mode p-4 rounded-xl shadow overflow-auto">
+                    <h4 class=" text-lg font-semibold mb-4">📝 Recent Activities</h4>
+                    <table class="min-w-full text-left border">
+                        <thead>
+                            <tr class="bg-gray-200 dark:bg-gray-700">
+                                <th class="p-2 border">User</th>
+                                <th class="p-2 border">Activity</th>
+                                <th class="p-2 border">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-2 border">Raj Singh</td>
+                                <td class="p-2 border">Added a new filter</td>
+                                <td class="p-2 border">Apr 16, 2025</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border">Harsh Patil</td>
+                                <td class="p-2 border">Updated Profile</td>
+                                <td class="p-2 border">Apr 15, 2025</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border">Deepak Chauhan</td>
+                                <td class="p-2 border">Logged in</td>
+                                <td class="p-2 border">Apr 14, 2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Sidebar toggle
+        document.getElementById('toggleSidebar').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('hidden');
+        });
+
+        
+
+        // Dark mode toggle
+        const darkToggle = document.getElementById('darkToggle');
+const mainBody = document.getElementById('mainBody');
+
+darkToggle.addEventListener('click', () => {
+  // Toggle dark background and text
+  mainBody.classList.toggle('bg-gray-900');
+  mainBody.classList.toggle('text-white');
+
+  // Optional: change button style to indicate it's active
+  darkToggle.classList.toggle('bg-gray-800');
+  darkToggle.classList.toggle('text-white');
+});
+
+
+        // Charts
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [1200, 1900, 3000, 2500],
+                    backgroundColor: 'rgba(59, 130, 246, 0.6)'
+                }]
+            }
+        });
+
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Users',
+                    data: [200, 450, 300, 600],
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    fill: false
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>
